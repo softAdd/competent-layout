@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Checkbox</title>
+    <style>
+        .option {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .check {
+            padding-left: 1.2em;
+        }
+        /* hidden checkbox */
+        .check__input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+        }
+
+        .check__box {
+            position: absolute;
+            margin-left: -1em;
+            margin-top: 0.3em;
+            width: 0.6em;
+            height: 0.6em;
+            border-radius: 0.05em;
+            background-color: #fff;
+            box-shadow: 0 0 0 0.1em #4a90e2;
+        }
+        /* checked */
+        .check__input:checked + .check__box {
+            background-color: #4a90e2;
+            background-image: url(assets/check.svg);
+        }
+        /* focused */
+        .check__input:focus + .check__box {
+            box-shadow: 0 0 0 0.1em #4a90e2, 0 0 0 0.2em #7ed321;
+        }
+        /* disabled */
+        .check__input:disabled + .check__box {
+            box-shadow: 0 0 0 0.1em #9b9b9b;
+        }
+        
+        .check__input:checked:disabled + .check__box {
+            background-color: #9b9b9b;
+        }
+    </style>
+</head>
+<body>
+    <label class="check option">
+        <input class="check__input" type="checkbox">
+        <span class="check__box"></span>
+        Checkbox
+    </label>
+    <label class="check option">
+        <input class="check__input" type="checkbox" checked>
+        <span class="check__box"></span>
+        Checkbox: checked
+    </label>
+    <label class="check option">
+        <input class="check__input" type="checkbox" disabled>
+        <span class="check__box"></span>
+        Checkbox: disabled
+    </label>
+    <label class="check option">
+        <input class="check__input" type="checkbox" checked disabled>
+        <span class="check__box"></span>
+        Checkbox: checked + disabled
+    </label>
+</body>
+</html>
