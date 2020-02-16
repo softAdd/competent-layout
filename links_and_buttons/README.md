@@ -1,4 +1,4 @@
-## На основе статьи: [css-tricks.com](https://css-tricks.com/a-complete-guide-to-links-and-buttons/)
+## На основе статей: [css-tricks.com](https://css-tricks.com/a-complete-guide-to-links-and-buttons/), [medium.com](https://medium.com/@baradusov/стилизуем-кнопки-правильно-6ea5abc278b1)
 
 **Быстрый гайд**<br>
 1. В случае, если элемент предоставляет переход на другую страницу или на другую часть текущей страницы, стоит использовать ссылки:<br>
