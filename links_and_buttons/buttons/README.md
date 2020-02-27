@@ -1,174 +1,87 @@
-# Кнопки. Статьи: [css-tricks.com](https://css-tricks.com/a-complete-guide-to-links-and-buttons/), [medium.com](https://medium.com/@baradusov/стилизуем-кнопки-правильно-6ea5abc278b1)
+# Кнопки. Статья: [ishadeed.com](https://ishadeed.com/article/styling-the-good-old-button/)
 
-Базовый вид кнопки в HTML:
-```html
-<button>Buy Now</button>
-```
-
-Использование кнопок в формах:
-```html
-<form action="/" method="POST">
-  <input type="text" name="name" id="name">
-  <button>Submit</button>
-
-  <!-- If you want to be more explicit... -->
-  <button type="submit">Submit</button>
-
-  <!-- ...or clear the form inputs back to their initial values -->
-  <button type="reset">Reset</button>
-
-  <!-- This prevents a `submit` action from firing which may be useful sometimes inside a form -->
-  <button type="button">Non-submitting button</button>
-</form>
-
-<form action="/" method="get">
-
-  <!-- override the action -->
-  <button formaction="/elsewhere/" type="submit">Submit to elsewhere</button>
-
-  <!-- override encytype -->
-  <button formenctype="multipart/form-data" type="submit"></button>
-
-  <!-- override method -->
-  <button formmethod="post" type="submit"></button>
-
-  <!-- do not validate fields -->
-  <button formnovalidate type="submit"></button>
-
-  <!-- override target e.g. open in new tab -->
-  <button formtarget="_blank" type="submit"></button>
-
-</form>
-```
-
-Кнопки могут содержать дочерние элементы:
-```html
-<button>
-   <svg aria-hidden="true" focusable="false">
-     <path d="..." />
-   </svg>
-   <span class="callout">Big</span>
-   Sale!
-</button>
-
-<button type="button">
-  <span role="img" aria-label="Fox">
-    🦊
-  </span>
-  Button
-</button>
-```
-
-## Стилизация кнопок
-
-Кнопки должны выглядеть так, чтобы было заметно, что на них возможно нажать. Посмотреть примеры стилизации кнопок можно по ссылке - [the CodePen Topic on Buttons.](https://codepen.io/topic/buttons/picks).
-
-Убрать стили по умолчанию для всех кнопок:
+Начальные стили, взятые из google chrome
 ```css
-button {
-  font-family: inherit; /* For all browsers */
-  font-size: 100%; /* For all browsers */
-  line-height: 1.15; /* For all browsers */
-  margin: 0; /* Firefox and Safari have margin */
-  overflow: visible; /* Edge hides overflow */
-  text-transform: none; /* Firefox inherits text-transform */
-  -webkit-appearance: button; /* Safari otherwise prevents some styles */
-}
-
-button::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-button:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-```
-
-Другой, чуть менее эффективный способ сброса - кнопки становятся в виде текста. Такой способ лучше использовать, например, как миксин, в случае использования препроцессоров (Sass, Less или еще каких-нибудь).
-```css
-/**
- * Сброс стилей у кнопки.
- * Придётся немного поработать, чтобы получить нейтральный вид.
-*/
-button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-/* отображаем курсор в виде руки при наведении; некоторые
-  считают, что необходимо оставлять стрелочный вид для кнопок */
-  cursor: pointer;
-}
-```
-```html
-@mixin button-reset {
-   padding: 0;
-   border: none;
-   font: inherit;
-   color: inherit;
-   background-color: transparent;
-   cursor: pointer;
-}
-  
-.my-custom-button {
-   @include button-reset;
-   padding: 10px;
-   background-color: skyblue;
-}
-<button type="button">
-   У меня браузерные стили по-умолчанию.
-</button>
-<button type="button" class="my-custom-button">
-   А я использую собственные стили.
-</button>
-```
-
-В дополнение к использованию отмены базовых стилей для кнопок, можно добавить свой консистентный класс, задающий основу для всех кнопок:
-```css
-.button {
-  border: 0;
-  border-radius: 0.25rem;
-  background: #1E88E5;
-  color: white;
-  font-family: -system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.2;
-  white-space: nowrap;
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
-  margin: 0.25rem;
-  cursor: pointer;
-}
-```
-
-Состояния кнопок, которые можно стилизовать:
-```css
-button:hover { }
-button:focus { }
-button:active { }
-button:visited { }
-```
-
-Пример базовых стилей для кнопки:
-```css
-.btn {
-    /* по-умолчанию для <button>, но пригодится для <a> */
+.c-button {
+    -webkit-writing-mode: horizontal-tb !important;
+    -webkit-appearance: button;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+    padding: 1px 7px 2px;
+    text-rendering: auto;
+    color: initial;
     display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    /* создаём маленькие отступы, если кнопки перенесутся на две строки */
-    margin: 2px 0;
-    /* невидимая граница (понадобится для цвета при наведении/фокусе) */
-    border: solid 1px transparent;
-    border-radius: 4px;
-    /* размер строится из текста и отступов (без width/height) */
-    padding: 0.5em 1em;
-    /* убедитесь, что достаточно контраста! */
-    color: #ffffff;
-    background-color: #9555af;
+    text-align: start;
+    margin: 0em;
+    font: 400 11px system-ui;
+}
+```
+Базовые стили для кнопки
+```css
+.c-button {
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #4676D7;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+```
+Хорошо также добавить минимальную ширину
+```css
+.c-button {
+    min-width: 100px;
+    /* other styles */
+}
+```
+Далее необходимо позаботиться о состояних кнопки: hover, focused и disabled
+```css
+.c-button:hover {
+  background: #1d49aa;
+}
+
+.c-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.c-button[disabled] {
+    color: #d2d5db;
+    background: #6c7589;
+    cursor: not-allowed;
+}
+```
+Полный css:
+```css
+.c-button {
+  min-width: 100px;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #4676d7;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.c-button:hover {
+  background: #1d49aa;
+}
+
+.c-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.c-button[disabled] {
+    color: #d2d5db;
+    background: #6c7589;
+    cursor: not-allowed;
 }
 ```
 
-## Больше информации в следующих источниках: [css-tricks.com](https://css-tricks.com/a-complete-guide-to-links-and-buttons/), [medium.com](https://medium.com/@baradusov/стилизуем-кнопки-правильно-6ea5abc278b1)
+## Кнопки с иконками, многострочные кнопки и т.д. в статье: [ishadeed.com](https://ishadeed.com/article/styling-the-good-old-button/)
